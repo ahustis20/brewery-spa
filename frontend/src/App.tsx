@@ -1,56 +1,78 @@
 import { useEffect, useState } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import BreweryListing from './components/BreweryListing';
+import BreweryList from './components/BreweryList';
+import BreweryDetailedView from './components/BreweryDetailedView';
 import { Brewery } from './types';
-import { breweryService } from './services/breweryService';
+import { BreweryService } from './services/BreweryService';
 
 
 
 function App() {
 
     const [breweries, setBreweries] = useState<Brewery[]>([]);
-    // setBreweries(data);
+    const [listView, setListView] = useState(true);
+    const [selectedBrewery, setSelectedBrewery] = useState<Brewery | null>(null);
+    const cityName = "Denver";
+
+    // view boolean for going to detailed view
+    function handleBreweryClick(brewery: Brewery) {
+        setSelectedBrewery(brewery)
+        setListView(false);
+    }
+
+    // view boolean for returning to list page
+    function handleReturnClick() {
+        console.log("return click")
+        setSelectedBrewery(null)
+        setListView(true);
+    }
     
-    
+    // fetches list of breweries on initial page load
     useEffect(() => {
         const fetchBreweries = async () => {
             try {
-                const data = await breweryService.getAllBreweriesByCity("bozeman");
+                const data = await BreweryService.getAllBreweriesByCity(cityName);
                 setBreweries(data)
                 
-                numOfBreweries = data.length
-                console.log(data.length)
+                // console.log(data.length)
                 
             } catch (err) {
-                
+                // todo: add error handling
+
             }
-            console.log("app")
+            // console.log("app")
         };
         
         fetchBreweries();
     }, [])
     
-    var numOfBreweries = breweries.length;
 
     return (
-        <div className="App">
-            <header className="">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                <div className="p-4 m-3 alert bg-bzn-yellow">
-                    Breweries of Bozeman
+        <div className="App bg-gradient-primary">
+            <header className="container">
+                
+                <div className="alert alert-secondary">
+                    Breweries of {cityName}
                 </div>
 
-                <div className=''>
-                    {numOfBreweries} Breweries in Bozeman
-                </div>
+                <div className='py-3'>
 
-                <div className='row'>
-                    {breweries.map((brewery) => (
-                        <div key={brewery.id} className='col-sm-6 col-md-4 col-lg-3 p-3'>
-                            <BreweryListing brewery={brewery}></BreweryListing>
+                    {listView &&
+                        <div>
+                            <BreweryList 
+                                breweries={breweries}
+                                onBreweryClick={handleBreweryClick}
+                                cityName={cityName}></BreweryList>
                         </div>
-                    ))}
+                    } 
+
+                    {!listView &&
+                        <div>
+                            <BreweryDetailedView 
+                                brewery={selectedBrewery} 
+                                onReturnClick={handleReturnClick}></BreweryDetailedView>
+                        </div>
+                    }           
                 </div>
 
             </header>

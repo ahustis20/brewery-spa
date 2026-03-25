@@ -1,12 +1,17 @@
 .App {
-  text-align: center;
-  background-color: #ffd48f;
+  /* text-align: center; */
+  /* background-color: #ffd48f; */
   min-height: 100%;
+  padding: 4;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
