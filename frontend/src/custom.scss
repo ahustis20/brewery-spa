@@ -1,0 +1,16 @@
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+
+// 2. Include any default variable overrides here
+// $theme-colors: (
+//     "bzn-yellow": #EAB31E,
+//     "bzn-orange": #E58425,
+//     "bzn-burnt-orange": #A42822,
+// );
+    
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
