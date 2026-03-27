@@ -51,7 +51,7 @@ A full-stack web application for browsing and discovering breweries. Built with 
     "type": "Micro",
     "address": "123 Main St",
     "city": "Denver",
-    "state\_province": "Colorado",
+    "state_province": "Colorado",
     "country": "United States",
     "url": "https://brewery.com",
     "phone": "(555) 123-4567",
