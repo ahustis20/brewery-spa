@@ -3,7 +3,7 @@ import './App.css';
 import BreweryList from './components/BreweryList';
 import BreweryDetailedView from './components/BreweryDetailedView';
 import { Brewery } from './types';
-import { BreweryService } from './services/BreweryService';
+import { BreweryService } from './services/brewery-service';
 
 
 
