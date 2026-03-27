@@ -1,6 +1,6 @@
 <?php
 
-namespace Abbeyhustis\Backend\Class;
+namespace Abbeyhustis\Backend\Classes;
 
 class BreweryController {
 
