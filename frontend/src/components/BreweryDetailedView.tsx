@@ -13,10 +13,12 @@ export default function BreweryDetailedView({
     onReturnClick 
 }: BreweryDetailedViewProps) {
     
+    // creating marker for the map
     const BreweryMarker = ({ text, lat, lng }: {text: string; lat: number; lng : number;}) => ( 
         <div><i className="fa-solid fa-map-pin"></i></div>
     );
 
+    // default props for the map
     const defaultProps = {
         center: {
             lat: brewery?.latitude || 0,

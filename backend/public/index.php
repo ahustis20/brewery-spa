@@ -1,8 +1,9 @@
 <?php
+// instantiating classes
 require '../vendor/autoload.php';
-
 use Abbeyhustis\Backend\Classes\BreweryController;
 
+// setting headers 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -13,14 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-
+// grabbing request info
 $url = $_SERVER['REQUEST_URI'];
 $input = json_decode(file_get_contents('php://input'), true);
 
-// echo json_encode(['message' => 'API is running']);
-
-// error_log("yooo");
-
+// looking for /api request
 if (str_starts_with($url, '/api')) {
 
     // grab the path after the api
@@ -37,8 +35,8 @@ if (str_starts_with($url, '/api')) {
 
             // grabbing all breweries
             $all_breweries = $brewery_controller->getBreweries();
-            // error_log(print_r($all_breweries, 1));
-
+            
+            // returning breweries to requesting site
             echo $all_breweries;
         }
 
@@ -50,6 +48,4 @@ if (str_starts_with($url, '/api')) {
     echo json_encode(['error' => 1, 'msg' => 'invalid api path']);
 }
 
-// error_log("input:");
-// error_log(print_r($_SERVER, 1));
 

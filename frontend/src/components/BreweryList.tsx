@@ -13,13 +13,10 @@ export default function BreweryList({
     cityName
 } : BreweryListProps) {
 
-    const numOfBreweries = breweries.length
-
-
     return (
         <div className='row p-3'>
             <div className='p-3'>
-                {numOfBreweries} Breweries in {cityName}
+                {breweries.length} Breweries in {cityName}
             </div>
 
             {breweries.map((brewery) => (

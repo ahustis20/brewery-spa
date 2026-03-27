@@ -7,34 +7,29 @@ export const BreweryService = {
 
     async getAllBreweriesByCity(city: string): Promise<Brewery[]> {
 
-        const formattedCity : string = city.toLowerCase()
-        
-        console.log(API_BASE_URL)
 
-        // const response = await fetch(`${API_BASE_URL}breweries/?by_city=${city}`, {
-        const response = await fetch(`${API_BASE_URL}breweries/`, {
+        // use env variable to set the api url for the api server
+        const response = await fetch(`${API_BASE_URL}breweries`, {
             method: 'GET',
             headers: {
                 'Content-Type':'application/json'
             }
         })
         
-        // console.log(response)
 
+        // check if response has an error message
         if (!response.ok) {
             throw new Error('Failed to fetch user');
         }
         
         try {
-
+            // wrap json encode in a try catch
             var data = await response.json()
         } catch (error) {
             throw new Error('Error getting data');
         }
 
-        // console.log("data")
-        // console.log(data)
-
+        // create array of brewery types from the data recieved from api
         const breweries: Brewery[] = data.map((item: any) => ({
             id : item.id,
             name : item.name,
@@ -49,6 +44,7 @@ export const BreweryService = {
             latitude : item.latitude
         }));
 
+        // return array of breweries
         return breweries;
 
     }

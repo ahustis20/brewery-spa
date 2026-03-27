@@ -9,6 +9,7 @@ import { BreweryService } from './services/brewery-service';
 
 function App() {
 
+    // creating constants to and creating state variables 
     const [breweries, setBreweries] = useState<Brewery[]>([]);
     const [listView, setListView] = useState(true);
     const [error, setError] = useState(false);
@@ -32,15 +33,14 @@ function App() {
     useEffect(() => {
         const fetchBreweries = async () => {
             try {
+                // getting data from api
                 const data = await BreweryService.getAllBreweriesByCity(cityName);
                 setBreweries(data);
                 
             } catch (err) {
                 // error handling on the api call
-                // console.log(err);
+                console.log(err);
                 setError(true);
-
-
             }
         };
         
@@ -51,21 +51,21 @@ function App() {
     return (
         <div className="App bg-gradient-dark">
             <div className="app-header">
-                {/* <img src="IMG_6397.jpeg" className="img-fluid h-48 w-100" alt="mountains"></img> */}
                 <h1 className='text-center text-white font-weight-bold opacity-100'>Breweries of {cityName}</h1>
                 
             </div>
-            <header className="container">
-                
 
+            <header className="container">
                 <div className='py-3'>
 
+                    {/* error message if data fails to load */}
                     {error && 
                         <div className='alert alert-danger'>
                             Error getting brewery data, please try again.
                         </div>
                     }
 
+                    {/* brewery list view -- default */}
                     {listView && !error &&
                         <div>
                             <BreweryList 
@@ -75,17 +75,17 @@ function App() {
                         </div>
                     } 
 
+                    {/* brewery detailed view */}
                     {!listView && !error  && 
                         <div>
                             <BreweryDetailedView 
                                 brewery={selectedBrewery} 
                                 onReturnClick={handleReturnClick}></BreweryDetailedView>
                         </div>
-                    }           
+                    }  
+
                 </div>
-
             </header>
-
         </div>
     );
 }
