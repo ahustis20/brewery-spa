@@ -5,14 +5,34 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 
 // 2. Include any default variable overrides here
+
+// $enable-gradients: true;
+
+// // Import Bootstrap and its default variables
+// @import "../node_modules/bootstrap/scss/bootstrap";
+
 // $theme-colors: (
 //     "bzn-yellow": #EAB31E,
 //     "bzn-orange": #E58425,
 //     "bzn-burnt-orange": #A42822,
 // );
 
-$enable-gradients: true;
-    
-// Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+// $theme-colors: (
+//   "custom-color": #900
+// );
 
+
+// 1. Include functions first
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include variable overrides here
+$enable-gradients: true;
+
+// 3. Import variables
+@import "../node_modules/bootstrap/scss/variables";
+
+// 4. Import mixins
+@import "../node_modules/bootstrap/scss/mixins";
+
+// 5. Now import the full bootstrap (which generates all utilities)
+@import "../node_modules/bootstrap/scss/bootstrap";

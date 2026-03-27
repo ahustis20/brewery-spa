@@ -43,9 +43,19 @@ export default function BreweryDetailedView({
                     <h4>{brewery?.name}</h4>
                     
                     <h5>{brewery?.type}</h5>
-                    <p>{brewery?.address || ""} {brewery?.city}, {brewery?.state_province}, {brewery?.country}</p>
+                    <p>{brewery?.address} {brewery?.city}, {brewery?.state_province}, {brewery?.country}</p>
                     
-                    <a href={brewery?.url} target="_blank" className="card-link">{brewery?.url}</a>
+                    { brewery?.phone ? (
+                        <a href={brewery.url} target="_blank" className="card-link">{brewery.phone}</a>
+                    ) : (
+                        <p>Website Not Available</p>
+                    )}
+                    
+                    { brewery?.url ? (
+                        <a href={brewery.url} target="_blank" className="card-link">{brewery.url}</a>
+                    ) : (
+                        <p>Website Not Available</p>
+                    )}
                 </div>
 
                 <div style={{ height: '48vh', width: '100%' }}>

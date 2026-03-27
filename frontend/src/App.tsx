@@ -11,19 +11,20 @@ function App() {
 
     const [breweries, setBreweries] = useState<Brewery[]>([]);
     const [listView, setListView] = useState(true);
+    const [error, setError] = useState(false);
     const [selectedBrewery, setSelectedBrewery] = useState<Brewery | null>(null);
     const cityName = "Denver";
 
     // view boolean for going to detailed view
     function handleBreweryClick(brewery: Brewery) {
-        setSelectedBrewery(brewery)
+        setSelectedBrewery(brewery);
         setListView(false);
     }
 
     // view boolean for returning to list page
     function handleReturnClick() {
-        console.log("return click")
-        setSelectedBrewery(null)
+        console.log("return click");
+        setSelectedBrewery(null);
         setListView(true);
     }
     
@@ -32,15 +33,15 @@ function App() {
         const fetchBreweries = async () => {
             try {
                 const data = await BreweryService.getAllBreweriesByCity(cityName);
-                setBreweries(data)
-                
-                // console.log(data.length)
+                setBreweries(data);
                 
             } catch (err) {
-                // todo: add error handling
+                // error handling on the api call
+                // console.log(err);
+                setError(true);
+
 
             }
-            // console.log("app")
         };
         
         fetchBreweries();
@@ -48,16 +49,24 @@ function App() {
     
 
     return (
-        <div className="App bg-gradient-primary">
+        <div className="App bg-gradient-dark">
+            <div className="app-header">
+                {/* <img src="IMG_6397.jpeg" className="img-fluid h-48 w-100" alt="mountains"></img> */}
+                <h1 className='text-center text-white font-weight-bold opacity-100'>Breweries of {cityName}</h1>
+                
+            </div>
             <header className="container">
                 
-                <div className="alert alert-secondary">
-                    Breweries of {cityName}
-                </div>
 
                 <div className='py-3'>
 
-                    {listView &&
+                    {error && 
+                        <div className='alert alert-danger'>
+                            Error getting brewery data, please try again.
+                        </div>
+                    }
+
+                    {listView && !error &&
                         <div>
                             <BreweryList 
                                 breweries={breweries}
@@ -66,7 +75,7 @@ function App() {
                         </div>
                     } 
 
-                    {!listView &&
+                    {!listView && !error  && 
                         <div>
                             <BreweryDetailedView 
                                 brewery={selectedBrewery} 
