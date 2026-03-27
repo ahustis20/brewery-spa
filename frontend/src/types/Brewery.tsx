@@ -8,6 +8,7 @@ export interface Brewery {
     city? : string;
     state_province? : string;
     country? : string;
+    zip? : string;
     url? : string;
     phone? : string;
     longitude : number;

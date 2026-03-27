@@ -46,7 +46,15 @@ export default function BreweryDetailedView({
                     <h4>{brewery?.name}</h4>
                     
                     <h5>{brewery?.type}</h5>
-                    <p>{brewery?.address} {brewery?.city}, {brewery?.state_province}, {brewery?.country}</p>
+                    <p>
+                        {brewery?.address !== '' ? (
+                        <>
+                            {brewery?.address}
+                            <br />
+                        </>
+                    ) : ""}
+                    {brewery?.city}, {brewery?.state_province} {brewery?.zip}<br></br>{brewery?.country} 
+                    </p>
                     
                     { brewery?.phone ? (
                         <p>{brewery?.phone}</p>

@@ -33,7 +33,6 @@ A full-stack web application for browsing and discovering breweries. Built with 
 ## Features
 
 - **Browse Breweries:** View a complete list of breweries with detailed information
-- **Search by City:** Filter breweries by location
 - **Brewery Details:** View comprehensive information including address, phone number, website, and coordinates
 - **Responsive Design:** Works seamlessly on desktop and mobile devices
 
@@ -93,6 +92,7 @@ A full-stack web application for browsing and discovering breweries. Built with 
 ### Frontend
 - **React 18** with TypeScript
 - **React Router** for navigation
+- **Bootstrap 5** for styling
 - **Fetch API** for backend communication
 - **Serve** for static file serving
 

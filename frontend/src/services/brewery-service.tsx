@@ -57,6 +57,7 @@ export const BreweryService = {
             city: item.city || "",
             state_province: item.state_province || "",
             country: item.country || "",
+            zip: item.postal_code || "",
             url : item.website_url || "",
             phone : formatPhoneNumber(item.phone) || "",
             longitude : item.longitude,
