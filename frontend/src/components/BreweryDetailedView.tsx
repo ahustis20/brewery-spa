@@ -1,6 +1,7 @@
 import React from "react";
 import { Brewery } from "../types";
 import GoogleMapReact from "google-map-react";
+import { format } from 'libphonenumber-js';
 
 type BreweryDetailedViewProps = {
     brewery: Brewery | null,
@@ -48,13 +49,15 @@ export default function BreweryDetailedView({
                     <p>{brewery?.address} {brewery?.city}, {brewery?.state_province}, {brewery?.country}</p>
                     
                     { brewery?.phone ? (
-                        <a href={brewery.url} target="_blank" className="card-link">{brewery.phone}</a>
+                        <p>{brewery?.phone}</p>
                     ) : (
-                        <p>Website Not Available</p>
+                        <p>Phone Not Available</p>
                     )}
                     
                     { brewery?.url ? (
-                        <a href={brewery.url} target="_blank" className="card-link">{brewery.url}</a>
+                        <p>
+                            <a href={brewery.url} target="_blank" className="card-link">{brewery.url}</a>
+                        </p>
                     ) : (
                         <p>Website Not Available</p>
                     )}

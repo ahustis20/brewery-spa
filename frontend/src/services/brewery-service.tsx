@@ -3,10 +3,29 @@ import { Brewery } from '../types'
 
 const API_BASE_URL = env.API_BASE_URL
 
+// function to format the phone string to be more readable
+const formatPhoneNumber = (phoneString: string): string => {
+
+    // validating phone exists
+    if (phoneString && phoneString.length) {
+
+        // Remove all non-digits
+        const cleaned = phoneString.replace(/\D/g, ''); 
+        const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        
+        // combining matched digits
+        if (match) {
+            return `(${match[1]}) ${match[2]}-${match[3]}`;
+        }
+    }
+    
+    // Return original if it doesn't match the pattern or is empty
+    return phoneString; 
+};
+
 export const BreweryService = {
 
     async getAllBreweriesByCity(city: string): Promise<Brewery[]> {
-
 
         // use env variable to set the api url for the api server
         const response = await fetch(`${API_BASE_URL}breweries`, {
@@ -39,7 +58,7 @@ export const BreweryService = {
             state_province: item.state_province || "",
             country: item.country || "",
             url : item.website_url || "",
-            phone : item.phone || "",
+            phone : formatPhoneNumber(item.phone) || "",
             longitude : item.longitude,
             latitude : item.latitude
         }));

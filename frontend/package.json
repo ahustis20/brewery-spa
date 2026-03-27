@@ -13,6 +13,7 @@
     "@types/react-dom": "^19.2.3",
     "bootstrap": "^5.3.8",
     "google-map-react": "^2.2.5",
+    "libphonenumber-js": "^1.12.40",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-scripts": "5.0.1",
