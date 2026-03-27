@@ -1,11 +1,14 @@
 <?php
 
-namespace Abbeyhustis\Backend\Classes;
+namespace Abbeyhustis\Backend\Class;
 
 class BreweryController {
 
-
-    public function getBreweries() {
+    /**
+     * function to retrieve all the brewery information
+     * 
+     */
+    public function getBreweries() :string {
 
         // storing city brewery data in json files
         $breweries_file_string = file_get_contents("./../denver_breweries.json");
