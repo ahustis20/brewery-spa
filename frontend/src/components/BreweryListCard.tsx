@@ -10,7 +10,7 @@ export default function BreweryListCard({
 }: BreweryListCardProps) {
     
     return (
-        <div className=" card h-100 cursor-pointer">
+        <div className=" card h-100 brewery-card shadow">
             <div className="card-header p-3">
 
                 <h5 className="card-title text-left">{brewery.name}</h5>

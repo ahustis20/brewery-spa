@@ -9,7 +9,7 @@ import { BreweryService } from './services/brewery-service';
 
 function App() {
 
-    // creating constants to and creating state variables 
+    // creating state variables to use throughout the app
     const [breweries, setBreweries] = useState<Brewery[]>([]);
     const [listView, setListView] = useState(true);
     const [error, setError] = useState(false);
@@ -24,7 +24,6 @@ function App() {
 
     // view boolean for returning to list page
     function handleReturnClick() {
-        console.log("return click");
         setSelectedBrewery(null);
         setListView(true);
     }
