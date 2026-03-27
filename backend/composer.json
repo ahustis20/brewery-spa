@@ -1,0 +1,16 @@
+{
+    "name": "abbeyhustis/backend",
+    "description": "brewery info spa for submittable coding challenge",
+    "autoload": {
+        "psr-4": {
+            "Abbeyhustis\\Backend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Abbey Hustis",
+            "email": "ahustis20@gmail.com"
+        }
+    ],
+    "require": {}
+}
