@@ -33,7 +33,7 @@ if (str_starts_with($url, '/api')) {
         $brewery_controller = new BreweryController;
         
         // get all breweries endpoint
-        if($_SERVER['REQUEST_METHOD'] === "GET" && $endpoint == "/breweries/") {
+        if($_SERVER['REQUEST_METHOD'] === "GET" && $endpoint == "/breweries") {
 
             // grabbing all breweries
             $all_breweries = $brewery_controller->getBreweries();
