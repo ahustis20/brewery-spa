@@ -21,7 +21,7 @@ export default function BreweryListCard({
                 <h6 className="card-subtitle">{brewery.type}</h6>
                
                 <div className="card-text">
-                   {brewery.address != '' ? `${brewery.address},` : ''} {brewery?.city} {brewery?.state_province}, {brewery?.country}
+                   {brewery.address !== '' ? `${brewery.address},` : ''} {brewery?.city} {brewery?.state_province}, {brewery?.country}
                 </div>
                 
                 { brewery.url ? (
